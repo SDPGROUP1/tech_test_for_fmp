@@ -13,3 +13,5 @@ Note.propTypes = {
     main_content: PropTypes.string.isRequired
 }
 
+export default Note
+

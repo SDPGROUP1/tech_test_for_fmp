@@ -1,11 +1,8 @@
-let currentId = 0
-
 export function addNote(title, main_content) {
     return {
         type: 'ADD_NOTE',
         title,
         main_content,
-        id: currentId
     }
 }
 

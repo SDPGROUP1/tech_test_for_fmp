@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Note from './Note'
 
-const Notes = ({ notes }) => (
+let Notes = ({ notes }) => (
     <div>
         {notes.map(note =>
             <Note
@@ -18,4 +18,6 @@ const mapStateToProps = (state) => ({
     notes: state.notes
 })
 
-export default connect(mapStateToProps)(Notes)
+Notes = connect(mapStateToProps)(Notes)
+
+export default Notes
