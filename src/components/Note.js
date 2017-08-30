@@ -1,10 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import NoteView from './NoteView'
+import NoteForm from './NoteForm'
+import { editNote } from '../actions/'
 
-const Note = ({ title, main_content }) => (
+const Note = ({ id, title, main_content, editable }) => (
     <div>
-        <h1>{title}</h1>
-        <h3>{main_content}</h3>
+        {(editable != true) &&
+            <NoteView title={title} main_content={main_content} />
+        }
+        {(editable == true) &&
+            <NoteForm id={id} title={title} main_content={main_content} action={editNote} /> 
+        }
     </div>
 )
 

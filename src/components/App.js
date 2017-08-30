@@ -1,10 +1,11 @@
 import React from 'react'
 import Notes from './Notes'
-import AddNote from './AddNote'
+import NoteForm from './NoteForm'
+import { addNote } from '../actions'
 
 const App = () => (
     <div>
-        <AddNote />
+        <NoteForm action={addNote} />
         <Notes />
     </div>
 )

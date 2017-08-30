@@ -26,8 +26,8 @@ let Notes = ({ dispatch, notes }) => (
                     }}
                 >
                     <Note
-                        key={note.id}
                         {...note}
+                        editable={true}
                     />
                 </Modal>
             </div>

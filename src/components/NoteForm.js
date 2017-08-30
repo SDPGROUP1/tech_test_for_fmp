@@ -1,43 +1,52 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-let NoteForm = ({dispatch, action, id, title, main_content}) => {
-    let title_node
-    let main_content_node
+class NoteForm extends Component {
+    constructor(props) {
+        super(props)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
 
-    return (
-        <div>
-            <form onSubmit={e =>{
-            e.preventDefault()
-            if (!title_node.value.trim() && !main_content_node.value.trim()) {
-                return
-            }
-            if (id === undefined) {
-                dispatch(action(title_node.value, main_content_node.value))
-            } else {
-                dispatch(action(id, title_node.value, main_content_node.value))
-            }
-            title_node.value = ''
-            main_content_node.value = ''
-            }}>
-                <input 
-                    ref={node => {
-                        title_node = node
-                    }}
-                    value={title}
-                />
-                <input 
-                    ref={node => {
-                        main_content_node = node
-                    }}
-                    value={main_content}
-                />
-                <button type="submit">
-                    {(id === undefined) ? 'Add New Note' : 'Save Changes to Note'} 
-                </button>        
-            </form>
-        </div>
-    )
+    handleSubmit(e){
+        e.preventDefault()
+        if (this.props.id == undefined) {
+            this.props.dispatch(this.props.action(this.refs.title.value, this.refs.main_content.value))
+            this.refs.title.value = ''
+            this.refs.main_content.value = ''    
+        } else {
+            this.props.dispatch(this.props.action(this.props.id, this.refs.title.value, this.refs.main_content.value))                    
+        }
+        if ((this.refs.title.value.length + this.refs.main_content.value) == 0) {
+            return
+        }
+    }
+
+    componentDidMount() {
+        this.refs.title.value = this.props.title || ""
+        this.refs.main_content.value = this.props.main_content || ""
+    }
+
+    render() {
+        const { id, title, main_content} = this.props
+
+        return (
+            <div>
+                <form
+                    onSubmit={this.handleSubmit}
+                >
+                    <input
+                        ref={'title'}
+                    />
+                    <input
+                        ref={'main_content'}
+                    />
+                    <button type="submit">
+                        {(id === undefined) ? 'Add New Note' : 'Save Changes to Note'} 
+                    </button>        
+                </form>
+            </div>
+        )
+    }
 }
 
 NoteForm = connect()(NoteForm)
