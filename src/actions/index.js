@@ -6,9 +6,17 @@ export function addNote(title, main_content) {
     }
 }
 
-export function editNote(title, main_content) {
+export function toggleModal(id) {
+    return {
+        type: 'TOGGLE_MODAL',
+        id
+    }
+}
+
+export function editNote(id, title, main_content) {
     return {
         type: 'EDIT_NOTE',
+        id,
         title,
         main_content
     }

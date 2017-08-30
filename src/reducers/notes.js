@@ -1,5 +1,3 @@
-let currentId = 0
-
 const notes = (state = [], action) => {
     switch (action.type) {
         case 'ADD_NOTE':
@@ -11,6 +9,7 @@ const notes = (state = [], action) => {
                     main_content: action.main_content,
                     date_created: new Date().getDate(),
                     date_edited: new Date().getDate(),
+                    modal_open: false,
                 }
             ]
         case 'EDIT_NOTE':
@@ -22,6 +21,10 @@ const notes = (state = [], action) => {
         case 'DELETE_NOTE':
             return state.filter(note =>
                 note.id !== action.id
+            )
+        case 'TOGGLE_MODAL':
+            return state.map(note =>
+                note.id === action.id ? {...note, modal_open: !note.modal_open } : note
             )
         default:
             return state
