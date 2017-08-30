@@ -14,7 +14,7 @@ const notes = (state = [], action) => {
         case 'EDIT_NOTE':
             return state.map(note =>
                 note.id === action.id ? 
-                    {...note, title: note.title, main_content: note.main_content} :
+                    {...note, title: note.title, main_content: note.main_content, date_edited: new Date().getDate()} :
                     note
             )
         case 'DELETE_NOTE':
