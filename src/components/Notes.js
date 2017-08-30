@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import Note from './Note'
 
 const Notes = ({ notes }) => (
@@ -12,3 +13,9 @@ const Notes = ({ notes }) => (
         )}
     </div>
 )
+
+const mapStateToProps = (state) => ({
+    notes: state.notes
+})
+
+export default connect(mapStateToProps)(Notes)
