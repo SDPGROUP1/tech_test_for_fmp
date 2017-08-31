@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const NoteView = ({ title, main_content }) => (
     <div>
         <h1>{title}</h1>
-        <h3>{main_content}</h3>
+        <h3 dangerouslySetInnerHTML={{__html:main_content.replace(/(?:\r\n|\r|\n)/g, '<br />')}}></h3>
     </div>
 )
 

@@ -9,25 +9,25 @@ class NoteForm extends Component {
 
     handleSubmit(e){
         e.preventDefault()
-        if (this.props.id == undefined) {
+        if ((this.refs.title.value.length + this.refs.main_content.value.length) === 0) {
+            return
+        }
+        if (this.props.id === undefined) {
             this.props.dispatch(this.props.action(this.refs.title.value, this.refs.main_content.value))
             this.refs.title.value = ''
             this.refs.main_content.value = ''    
         } else {
             this.props.dispatch(this.props.action(this.props.id, this.refs.title.value, this.refs.main_content.value))                    
         }
-        if ((this.refs.title.value.length + this.refs.main_content.value) == 0) {
-            return
-        }
     }
 
     componentDidMount() {
         this.refs.title.value = this.props.title || ""
-        this.refs.main_content.value = this.props.main_content || ""
+        this.refs.main_content.value = (this.props.main_content) || ""
     }
 
     render() {
-        const { id, title, main_content} = this.props
+        const { id } = this.props
 
         return (
             <div
@@ -35,6 +35,7 @@ class NoteForm extends Component {
             >
                 <form
                     onSubmit={this.handleSubmit}
+                    onChange={(id === undefined) ? '' : this.handleSubmit}
                 >   
                     <div className='title-input'>
                         <input
@@ -43,14 +44,17 @@ class NoteForm extends Component {
                         />
                     </div>
                     <div className='main-content-input'>
-                        <input
+                        <textarea
+                            rows={id === undefined ? '5' : '15'}
                             placeholder={'Enter your note'}
                             ref={'main_content'}
                         />
                     </div>
-                    <button type="submit">
-                        {(id === undefined) ? 'Add New Note' : 'Save Changes to Note'} 
-                    </button>        
+                    {
+                        (id === undefined) && <button type="submit">
+                            {'Add New Note'} 
+                        </button>  
+                    }      
                 </form>
             </div>
         )

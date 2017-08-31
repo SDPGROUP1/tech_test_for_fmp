@@ -1,13 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Note from './Note'
 import Modal from 'react-modal'
-import { toggleModal } from '../actions'
+import { toggleModal, addNote } from '../actions'
+import NoteForm from './NoteForm'
 
 let Notes = ({ dispatch, notes }) => (
     <div id={"notes-container"} >
-        {notes.map(note =>
+        <NoteForm action={addNote} />
+        {notes.sort((a, b) => {
+            return new Date(b.date_edited).getTime() - new Date(a.date_edited).getTime();
+        }).map(note =>
             <div key={note.id} className={"note-container"} >
                 <div
                     onClick={e=> {

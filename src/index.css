@@ -1,5 +1,20 @@
 body {
-    font-family: 'Delius', cursive;    
+    font-family: 'Delius', cursive;
+    word-break: break-all;    
+}
+
+.ReactModal__Content {
+    width: 600px;
+    height: 600px;
+    padding: 0px 0px;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+.ReactModal__Content .note-container {
+    width: 600px;
+    height: 600px;
+    margin: auto; 
 }
 
 .note-container h1 {
@@ -10,10 +25,10 @@ body {
     padding: 0px 15px;
 }
 
-input {
+input, textarea {
     background-color: transparent;
     border-width: 0px 0px 1px 0px;
-    border-color: black;
+    border-color: #ccc;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -32,9 +47,10 @@ input {
     font-weight: bold;
 }
 
-.main-content-input input {
+.main-content-input textarea {
     font-family: 'Delius', cursive;    
     font-size: 1.17em;
+    height: 100%;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
     -webkit-margin-start: 0px;
@@ -42,6 +58,15 @@ input {
     margin-right: auto;
     margin-left: auto;   
     font-weight: bold;
+    resize: none;
+    border-color: transparent;
+    overflow: hidden;
+    background-attachment: local;
+    background-image:
+        linear-gradient(to right, #fdf795 10px, transparent 10px),
+        linear-gradient(to left, #fdf795 10px, transparent 10px),
+        repeating-linear-gradient(#fdf795, #fdf795 30px, #ccc 30px, #ccc 31px, #fdf795 31px);
+    line-height: 31px;
 }
 
 .main-content-input, .title-input {
@@ -50,6 +75,7 @@ input {
 
 .note-container {
     width: 25%;
+    vertical-align:top;
     display: inline-block;
     background-color: #fdf795;
     margin: 15px 15px;

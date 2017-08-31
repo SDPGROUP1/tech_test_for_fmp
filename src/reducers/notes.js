@@ -7,15 +7,15 @@ const notes = (state = [], action) => {
                     id: Math.random().toString(36).substr(2, 5),
                     title: action.title,
                     main_content: action.main_content,
-                    date_created: new Date().getDate(),
-                    date_edited: new Date().getDate(),
+                    date_created: new Date(),
+                    date_edited: new Date(),
                     modal_open: false,
                 }
             ]
         case 'EDIT_NOTE':
             return state.map(note =>
                 note.id === action.id ? 
-                    {...note, title: action.title, main_content: action.main_content, date_edited: new Date().getDate()} :
+                    {...note, title: action.title, main_content: action.main_content, date_edited: new Date()} :
                     note
             )
         case 'DELETE_NOTE':
