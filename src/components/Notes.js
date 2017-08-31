@@ -12,17 +12,21 @@ class Notes extends Component {
       }
 
     render() {
-        const { dispatch, notes } = this.props 
+        const { dispatch, notes } = this.props
+
+        let sorted_notes = notes.filter(note => {
+            return note.title.length > 0 || note.main_content.length > 0
+        }).sort((a, b) => {
+            return  (new Date(b.date_edited).getTime() - new Date(a.date_edited).getTime())
+        })
+
+        sorted_notes.unshift(notes.filter(note => {
+            return note.title.length === 0 && note.main_content.length === 0
+        })[0])
 
         return (
             <div id={"notes-container"} >
-                {notes.sort((a, b) => {
-                    if ((b.title.length === 0 && b.main_content.length === 0) || (a.title.length === 0 && a.main_content.length === 0)) {
-                        return 1
-                    } else {
-                        return (new Date(b.date_edited).getTime() - new Date(a.date_edited).getTime())
-                    }
-                }).map(note =>
+                {sorted_notes.map(note =>
                     <Note 
                         key={note.id}
                         {...note}
