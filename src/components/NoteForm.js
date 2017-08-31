@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { addNote } from '../actions'
+
 
 class NoteForm extends Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (!prevProps.title && !prevProps.main_content) {
+            this.props.dispatch(addNote('', ''))
+        }
     }
 
     handleSubmit(e){
@@ -49,12 +57,7 @@ class NoteForm extends Component {
                             placeholder={'Enter your note'}
                             ref={'main_content'}
                         />
-                    </div>
-                    {
-                        (id === undefined) && <button type="submit">
-                            {'Add New Note'} 
-                        </button>  
-                    }      
+                    </div>    
                 </form>
             </div>
         )
