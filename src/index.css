@@ -1,10 +1,44 @@
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .note-container {
+        width: 25% !important;
+        margin: 15px 15px !important;
+        
+    }
+    .ReactModal__Content {
+        width: 600px !important;
+        height: 600px !important;
+    }
+    .ReactModal__Content .note-container {
+        width: 600px !important;
+        height: 600px !important;
+    }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
 body {
     font-family: 'Delius', cursive;
     word-break: break-all;    
 }
 
 .ReactModal__Content {
-    width: 600px;
+    width: 75%;
     height: 600px;
     padding: 0px 0px;
     left: 50% !important;
@@ -12,9 +46,9 @@ body {
 }
 
 .ReactModal__Content .note-container {
-    width: 600px;
-    height: 600px;
-    margin: auto; 
+    width: 100% !important;
+    height: 600px !important;
+    margin: auto !important; 
 }
 
 .note-container h1 {
@@ -74,13 +108,13 @@ input, textarea {
 }
 
 .note-container {
-    width: 25%;
     vertical-align:top;
     display: inline-block;
     background-color: #fdf795;
-    margin: 15px 15px;
+    margin: 15px 0px;    
     text-align: left;
     height: 300px;
+    width: 100%;            
 }
 
 #notes-container {

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Note from './Note'
-import Modal from 'react-modal'
-import { toggleModal, addNote } from '../actions'
-import NoteForm from './NoteForm'
+import { addNote } from '../actions'
 
 class Notes extends Component {
     constructor(props) {
@@ -13,16 +11,17 @@ class Notes extends Component {
         }
       }
 
-    componentDidUpdate(prevProps, prevState) {
-    }
-
     render() {
         const { dispatch, notes } = this.props 
 
         return (
             <div id={"notes-container"} >
                 {notes.sort((a, b) => {
-                    return new Date(b.date_edited).getTime() - new Date(a.date_edited).getTime();
+                    if ((b.title.length === 0 && b.main_content.length === 0) || (a.title.length === 0 && a.main_content.length === 0)) {
+                        return 1
+                    } else {
+                        return (new Date(b.date_edited).getTime() - new Date(a.date_edited).getTime())
+                    }
                 }).map(note =>
                     <Note 
                         key={note.id}
