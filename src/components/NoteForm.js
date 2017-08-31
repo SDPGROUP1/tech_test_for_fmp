@@ -30,16 +30,24 @@ class NoteForm extends Component {
         const { id, title, main_content} = this.props
 
         return (
-            <div>
+            <div
+                className='note-container'
+            >
                 <form
                     onSubmit={this.handleSubmit}
-                >
-                    <input
-                        ref={'title'}
-                    />
-                    <input
-                        ref={'main_content'}
-                    />
+                >   
+                    <div className='title-input'>
+                        <input
+                            placeholder={'Enter your note title'}
+                            ref={'title'}
+                        />
+                    </div>
+                    <div className='main-content-input'>
+                        <input
+                            placeholder={'Enter your note'}
+                            ref={'main_content'}
+                        />
+                    </div>
                     <button type="submit">
                         {(id === undefined) ? 'Add New Note' : 'Save Changes to Note'} 
                     </button>        

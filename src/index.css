@@ -1,0 +1,65 @@
+body {
+    font-family: 'Delius', cursive;    
+}
+
+.note-container h1 {
+    padding: 0px 15px;
+}
+
+.note-container h3 {
+    padding: 0px 15px;
+}
+
+input {
+    background-color: transparent;
+    border-width: 0px 0px 1px 0px;
+    border-color: black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.title-input input {
+    font-family: 'Delius', cursive;
+    font-size: 2em;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    margin-right: auto;
+    margin-left: auto;        
+    font-weight: bold;
+}
+
+.main-content-input input {
+    font-family: 'Delius', cursive;    
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    margin-right: auto;
+    margin-left: auto;   
+    font-weight: bold;
+}
+
+.main-content-input, .title-input {
+    padding: 0px 15px;    
+}
+
+.note-container {
+    width: 25%;
+    display: inline-block;
+    background-color: #fdf795;
+    margin: 15px 15px;
+    text-align: left;
+    height: 300px;
+}
+
+#notes-container {
+    max-width: 1400px;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}

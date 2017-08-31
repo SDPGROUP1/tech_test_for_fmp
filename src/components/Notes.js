@@ -6,9 +6,9 @@ import Modal from 'react-modal'
 import { toggleModal } from '../actions'
 
 let Notes = ({ dispatch, notes }) => (
-    <div>
+    <div id={"notes-container"} >
         {notes.map(note =>
-            <div key={note.id} >
+            <div key={note.id} className={"note-container"} >
                 <div
                     onClick={e=> {
                         dispatch(toggleModal(note.id))
