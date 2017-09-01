@@ -9,7 +9,12 @@ const store = createStore(
 )
 
 store.subscribe(() => {
-    localStorage.setItem('reduxState', JSON.stringify(store.getState()))    
+    let storedStore = JSON.parse(JSON.stringify(store.getState()))
+
+    storedStore.notes = storedStore.notes.filter(note => {
+        return note.title.length > 0 || note.main_content.length > 0        
+    })
+    localStorage.setItem('reduxState', JSON.stringify(storedStore))
 })
 
 export default store

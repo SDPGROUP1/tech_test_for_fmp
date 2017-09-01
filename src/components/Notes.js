@@ -6,10 +6,12 @@ import { addNote } from '../actions'
 class Notes extends Component {
     constructor(props) {
         super(props);
-        if (props.notes.length === 0) {
+        if (props.notes.filter(note => {
+                return note.title.length === 0 && note.main_content.length === 0
+            }).length === 0) {
             props.dispatch(addNote('', ''))            
-        }
-      }
+        }       
+    }      
 
     render() {
         const { dispatch, notes } = this.props
