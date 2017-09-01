@@ -47,14 +47,14 @@ class NoteForm extends Component {
                 >   
                     <div className='title-input'>
                         <input
-                            placeholder={'Enter your note title'}
+                            placeholder={'Note title'}
                             ref={'title'}
                         />
                     </div>
                     <div className='main-content-input'>
                         <textarea
                             rows={id === undefined ? '5' : '15'}
-                            placeholder={'Enter your note'}
+                            placeholder={'Note contents'}
                             ref={'main_content'}
                         />
                     </div>    

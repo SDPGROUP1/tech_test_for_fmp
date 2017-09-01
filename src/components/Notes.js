@@ -26,8 +26,6 @@ class Notes extends Component {
 
         sorted_notes[0] === undefined ? sorted_notes.shift() : ''
 
-        console.log(sorted_notes)
-
         return (
             <div id={"notes-container"} >
                 {sorted_notes.map(note =>

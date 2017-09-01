@@ -9,14 +9,13 @@ class Note extends Component {
     render() {
         const { id, title, main_content, editable, modal_open, dispatch } = this.props
         return (
-            <div className={"note-container"}>
-                <div
-                    onClick={e=> {
+            <div 
+                className={"note-container"}
+                onClick={e=> {
                         dispatch(toggleModal(id))
                     }}
-                >
-                    <NoteView title={title} main_content={main_content} />
-                </div>
+            >
+                <NoteView title={title} main_content={main_content} />
                 <Modal
                     contentLabel={id + '_modal'}
                     isOpen={modal_open}

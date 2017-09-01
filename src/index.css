@@ -21,26 +21,24 @@
 
 }
 
-/* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
-
-}
-
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-
-}
-
-
 body {
     font-family: 'Delius', cursive;
     word-break: break-all;    
 }
 
+.ReactModal__Overlay {
+    overflow: auto !important;
+}
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
 .ReactModal__Content {
-    width: 75%;
-    height: 600px;
-    padding: 0px 0px;
+    overflow: hidden !important;
+    width: 85%;
+    height: 568px;
+    padding: 0px 0px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
 }
